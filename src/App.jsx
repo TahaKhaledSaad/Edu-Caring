@@ -7,8 +7,10 @@ import SpeakerReg from "./components/Website/Register/SpeakerReg.jsx";
 
 // Main Page
 import LandingPage from "./components/Website/LandingPage/LandingPage.jsx";
-import Test from "./components/Test.jsx";
 import RequireAuth from "./components/Website/Register/RequireAuth.jsx";
+import MyEvents from "./components/Website/myEvents/MyEvents.jsx";
+import Home from "./components/Website/home/Home.jsx";
+import Community from "./components/Website/community/Community.jsx";
 // import Home from "./components/Website/home/Home.jsx";
 
 // import Verfication from "./components/Website/verfiy-number/Verfication.jsx";
@@ -25,14 +27,16 @@ function App() {
     <div>
       <Routes>
         {/* Puplic Routes */}
-        <Route path="/" element={<LandingPage></LandingPage>}></Route>
-        <Route path="login" element={<Login></Login>}></Route>
-        <Route path="register-attendance" element={<AttendanceReg></AttendanceReg>}></Route>
-        <Route path="register-speaker" element={<SpeakerReg></SpeakerReg>}></Route>
-        <Route path="/test" element={<Test></Test>}></Route>
+        <Route path="/" element={<LandingPage />}></Route>
+        <Route path="login" element={<Login />}></Route>
+        <Route path="register-attendance" element={<AttendanceReg />}></Route>
+        <Route path="register-speaker" element={<SpeakerReg />}></Route>
 
-        <Route element={<RequireAuth></RequireAuth>}>
-          <Route path="myevents" element={<Test></Test>}></Route>
+        <Route element={<RequireAuth />}>
+          <Route path="/home" element={<Home />}>
+            <Route path="myevents" element={<MyEvents />} />
+            <Route path="community" element={<Community />} />
+          </Route>
         </Route>
       </Routes>
     </div>

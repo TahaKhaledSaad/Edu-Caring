@@ -77,7 +77,7 @@
 
 import ar from "../../../assets/sudia-arabia-flag.png";
 import en from "../../../assets/united-state-flag.png";
-import React, { useState } from "react";
+import { useState } from "react";
 
 export default function Language() {
   const [chosenLang, setChosenLang] = useState({

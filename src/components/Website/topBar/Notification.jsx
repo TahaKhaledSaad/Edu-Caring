@@ -108,7 +108,7 @@
 //   );
 // }
 
-import React, { useState, useEffect ,useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import imgEvent from "../../../assets/event-img1.jpeg";
 import person from "../../../assets/person.jpeg";
 import person1 from "../../../assets/person1.jpeg";

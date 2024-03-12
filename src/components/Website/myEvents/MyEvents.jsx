@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import eventImg from "../../../assets/event-img3.jpeg";
+import axios from "axios";
+import Cookie from "cookie-universal";
 
 function getFilteredEvents(events, filterValue) {
   switch (filterValue) {
@@ -65,19 +67,40 @@ export default function MyEvents() {
           currency: "SAR",
         },
       ]);
-    }, 1000); // حركة دي يا طه خد بالك 
+    }, 1000); // حركة دي يا طه خد بالك
   }, []);
+
+  const [eventss, setEventss] = useState([]);
+
+  const cookie = new Cookie();
+  const userId = cookie.get("userId");
+  console.log(userId);
+
+  useEffect(() => {
+    axios
+      .get("http://hossamelhadad-001-site12.atempurl.com/api/Event/GetAllForApp", {
+        headers: {
+          UserId: userId,
+        },
+        params: {
+          limite: 100,
+          skip: 0,
+        },
+      })
+      .then((data) => {
+        console.log(data);
+        setEventss(data.data.responseObject);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  console.log(eventss);
 
   return (
     <>
       <div className="myevents">
         <div className="header">
-          <select
-            name="type"
-            id="type"
-            value={filter}
-            onChange={(e) => setFilter(e.target.value)}
-          >
+          <select name="type" id="type" value={filter} onChange={(e) => setFilter(e.target.value)}>
             <option value="All">All</option>
             <option value="New">New</option>
             <option value="Finished">Finished</option>

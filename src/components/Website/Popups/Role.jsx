@@ -19,6 +19,14 @@ function Role({ roleCase }) {
     roleCase(!showRole);
   };
 
+  function definePath() {
+    if (selectedRole === "attendance") {
+      window.location.pathname = "register-attendance";
+    } else if (selectedRole === "speaker") {
+      window.location.pathname = "register-speaker";
+    }
+  }
+
   return (
     <>
       {showRole && (
@@ -37,9 +45,7 @@ function Role({ roleCase }) {
             </div>
           </div>
           <div className="btns">
-            <Link to={selectedRole === "attendance" ? "register-attendance" : "register-speaker"}>
-              Ok
-            </Link>
+            <Link onClick={definePath}>Ok</Link>
             <button onClick={handleCloseClick}>Cancel</button>
           </div>
         </div>

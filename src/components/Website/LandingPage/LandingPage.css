@@ -13,8 +13,9 @@
 @media (max-width: 992px) {
   .navbar-collapse {
     position: fixed;
-    top: 20vh; /* Adjust the top position */
-    right: 33vw; /* Adjust the right position */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
     background-color: #fff;
     z-index: 3;
     transition: transform 0.3s ease-in-out;
@@ -54,10 +55,20 @@
 }
 @media (max-width: 1100px) {
   .home {
-    height: calc(100vh + 360px);
+    height: 190vh
   }
 }
 @media (max-width: 920px) {
+  .home {
+    height: 75vh;
+  }
+}
+@media (max-width: 767px) {
+  .home {
+    height: 90vh;
+  }
+}
+@media (max-width: 400px) {
   .home {
     height: 100vh;
   }
@@ -124,6 +135,7 @@
   .landing .text {
     margin-top: 0;
     width: 40%;
+    text-align: center;
   }
 }
 @media (max-width: 920px) {
@@ -180,9 +192,9 @@
 }
 @media (max-width: 1100px) {
   .button {
-    bottom: 0;
-    left: auto;
-    right: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -70px;
   }
 }
 @media (max-width: 920px) {
@@ -380,6 +392,11 @@
   padding: 20px 0 0 5px;
   display: flex;
   align-items: center;
+}
+@media (max-width:1024px) {
+  .photos .more{
+    justify-content: center;
+  }
 }
 .photos .more:hover svg {
   animation: move 0.8s infinite;
@@ -722,6 +739,7 @@
   background: none;
   border: none;
   outline: none;
+  color: rgba(255, 255, 255, 0.5);;
 }
 .footer .links .subscribe input:placeholder {
   background: rgba(255, 255, 255, 0.5);
@@ -729,7 +747,7 @@
 .footer .links .subscribe svg {
   position: absolute;
   right: 5px;
-  top: 5px;
+  top: 10px;
   cursor: pointer;
 }
 

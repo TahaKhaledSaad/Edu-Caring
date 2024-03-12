@@ -101,7 +101,7 @@ export default function LandingPage() {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav mx-auto m-2 mb-lg-0">
                 <li className="nav-item active">
-                  <NavLink className="nav-link" href="">
+                  <NavLink className="nav-link" to="/home">
                     Home
                   </NavLink>
                 </li>
@@ -164,7 +164,7 @@ export default function LandingPage() {
                 velit, nunc. Eget commodo eget in aliquam facilisi facilisi nec magna hendrerit.
                 Placerat ipsum sit tellus urna, faucibus aenean lorem faucibus integer.
               </span>
-              <a className="button">
+              <a className="button" onClick={() => setRole(!role)}>
                 Register <i className="fas fa-chevron-right"></i>
               </a>
             </div>
@@ -810,12 +810,20 @@ export default function LandingPage() {
           <div className="person">
             <span>Register</span>
             <h3>Attendance</h3>
-            <button>Sign up now</button>
+            <button>
+              <Link className="text-dark" to="/register-attendance">
+                Sign up now
+              </Link>
+            </button>
           </div>
           <div className="person">
             <span>Register</span>
             <h3>Speaker</h3>
-            <button>Sign up now</button>
+            <button>
+              <Link className="text-dark" to="/register-speaker">
+                Sign up now
+              </Link>
+            </button>
           </div>
         </div>
         {/* End Register */}
@@ -865,7 +873,7 @@ export default function LandingPage() {
             <div className="col">
               <h6>Subscribe</h6>
               <div className="subscribe">
-                <input type="text" placeholder="mail"></input>
+                <input type="text" placeholder="mail" className="p-1"></input>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="15"
@@ -885,22 +893,24 @@ export default function LandingPage() {
           </div>
         </div>
         {/* End Footer */}
-        <div
-          style={{
-            width: "100vw",
-            height: "100vh",
-            position: "fixed",
-            top: 0,
-            left: 0,
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-            display: role ? "flex" : "none",
-            justifyContent: "center",
-            alignItems: "center",
-            zIndex: 100,
-          }}
-        >
-          {role && <Role roleCase={handleRoleFromChild}></Role>}
-        </div>
+      </div>
+
+      {/* Role */}
+      <div
+        style={{
+          width: "100vw",
+          height: "100vh",
+          position: "fixed",
+          top: 0,
+          left: 0,
+          backgroundColor: "rgba(0, 0, 0, 0.5)",
+          display: role ? "flex" : "none",
+          justifyContent: "center",
+          alignItems: "center",
+          zIndex: 100,
+        }}
+      >
+        {role && <Role roleCase={handleRoleFromChild}></Role>}
       </div>
     </>
   );

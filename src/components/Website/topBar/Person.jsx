@@ -1,4 +1,3 @@
-import React from "react";
 import personImg from "../../../assets/person.jpeg";
 function Person() {
   return (

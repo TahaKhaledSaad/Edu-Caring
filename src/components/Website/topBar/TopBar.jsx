@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Language from "./Language";
 import Support from "./Support";
 import Notification from "./Notification";
@@ -32,10 +32,10 @@ export default function TopBar() {
 
   return (
     <>
-      <div className="topbar d-flex justify-content-between align-items-center px-2 pt-2">
+      <div className="topbar d-flex justify-content-between align-items-center px-2 shadow-sm">
         <span>{routeText}</span>
 
-        <div className="d-flex align-items-center gap-4">
+        <div className="d-flex align-items-center gap-3">
           <Language />
           <Support />
           <Notification />

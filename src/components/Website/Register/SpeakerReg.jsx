@@ -68,7 +68,9 @@ export default function SpeakerReg() {
 
   // [3] Toggle Confirm Password Visibility
   const toggleConfirmPasswordVisibility = () => {
-    setShowConfirmPassword((prevShowConfirmPassword) => !prevShowConfirmPassword);
+    setShowConfirmPassword(
+      (prevShowConfirmPassword) => !prevShowConfirmPassword
+    );
   };
 
   // [4] Select Country
@@ -105,12 +107,16 @@ export default function SpeakerReg() {
 
     try {
       let result = await axios
-        .post("http://hossamelhadad-001-site12.atempurl.com/api/Auth/SpeakerRegister", formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            Accept: "text/plain",
-          },
-        })
+        .post(
+          "http://hossamelhadad-001-site12.atempurl.com/api/Auth/SpeakerRegister",
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+              Accept: "text/plain",
+            },
+          }
+        )
         .then((res) => {
           console.log(res.data);
           // Set Token && Roles && UserId
@@ -136,7 +142,10 @@ export default function SpeakerReg() {
 
   return (
     <>
-      <div className={style.container} style={{ display: regCase ? "block" : "none" }}>
+      <div
+        className={style.container}
+        style={{ display: regCase ? "block" : "none" }}
+      >
         {/* Header */}
         <div className={style.header}>
           {/* Before Uploading */}
@@ -165,7 +174,9 @@ export default function SpeakerReg() {
               style={{
                 width: "150px",
                 height: "150px",
-                backgroundImage: `url(${URL.createObjectURL(userData.ProfileImageFile)})`,
+                backgroundImage: `url(${URL.createObjectURL(
+                  userData.ProfileImageFile
+                )})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
@@ -205,7 +216,9 @@ export default function SpeakerReg() {
                   />
                 </div>
                 {showError && userData.NameAr.length < 3 && (
-                  <span className="m-0 my-0 text-danger">Name Should be More 3 characters</span>
+                  <span className="m-0 my-0 text-danger">
+                    Name Should be More 3 characters
+                  </span>
                 )}
               </div>
 
@@ -221,7 +234,9 @@ export default function SpeakerReg() {
                   />
                 </div>
                 {showError && userData.NameEn.length < 3 && (
-                  <span className="m-0 my-0 text-danger">Name Should be More 3 characters</span>
+                  <span className="m-0 my-0 text-danger">
+                    Name Should be More 3 characters
+                  </span>
                 )}
               </div>
 
@@ -229,7 +244,12 @@ export default function SpeakerReg() {
               <div>
                 <div className={style.input}>
                   <i className="fa-regular fa-envelope"></i>
-                  <input type="email" placeholder="email" name="Email" onChange={handleChange} />
+                  <input
+                    type="email"
+                    placeholder="email"
+                    name="Email"
+                    onChange={handleChange}
+                  />
                 </div>
                 {showError && !userData.Email.includes("@") && (
                   <span className="m-0 my-0 text-danger">Invalid Email</span>
@@ -247,7 +267,9 @@ export default function SpeakerReg() {
                   name="PhoneNumber"
                 />
                 {showError && userData.PhoneNumber.length < 10 && (
-                  <span className="m-0 my-0 text-danger">Invalid Phone Number</span>
+                  <span className="m-0 my-0 text-danger">
+                    Invalid Phone Number
+                  </span>
                 )}
               </div>
 
@@ -271,7 +293,11 @@ export default function SpeakerReg() {
               {/* input */}
               <div>
                 <div className={style.input}>
-                  <select name="GenderId" className="p-0 px-2 text-muted" onChange={handleChange}>
+                  <select
+                    name="GenderId"
+                    className="p-0 px-2 text-muted"
+                    onChange={handleChange}
+                  >
                     <option disabled>Gender</option>
                     <option value="1">Male</option>
                     <option value="2">Female</option>
@@ -315,7 +341,9 @@ export default function SpeakerReg() {
                   />
                 </div>
                 {showError && userData.Country.length < 3 && (
-                  <span className="m-0 my-0 text-danger">Please Select The Country</span>
+                  <span className="m-0 my-0 text-danger">
+                    Please Select The Country
+                  </span>
                 )}
               </div>
 
@@ -334,7 +362,9 @@ export default function SpeakerReg() {
                   />
                 </div>
                 {showError && userData.City.length < 3 && (
-                  <span className="m-0 my-0 text-danger">Please Select The City</span>
+                  <span className="m-0 my-0 text-danger">
+                    Please Select The City
+                  </span>
                 )}
               </div>
 
@@ -379,9 +409,12 @@ export default function SpeakerReg() {
                     onClick={toggleConfirmPasswordVisibility}
                   ></i>
                 </div>
-                {showError && userData.Password !== userData.ConfirmPassword && (
-                  <span className="m-0 my-0 text-danger">Password not Match</span>
-                )}
+                {showError &&
+                  userData.Password !== userData.ConfirmPassword && (
+                    <span className="m-0 my-0 text-danger">
+                      Password not Match
+                    </span>
+                  )}
               </div>
             </div>
 
@@ -407,8 +440,8 @@ export default function SpeakerReg() {
                   setShowError(true);
                 }
               }}
-              className="btn btn-info text-white fw-bold fs-5"
-              style={{ background: "#3296d4", width: "320px" }}
+              className="signup btn btn-info text-white fw-bold fs-5"
+              style={{ background: "#3296d4", width: "300px" }}
             >
               Sign Up
             </div>
@@ -416,7 +449,11 @@ export default function SpeakerReg() {
             {/* Have Account */}
             <div className="mt-3">
               I Already have an Account? &nbsp;
-              <Link to="/login" className="fw-bold">
+              <Link
+                to="/login"
+                className="fw-bold"
+                style={{ color: "#3296d4" }}
+              >
                 Sign In
               </Link>
             </div>
@@ -425,7 +462,10 @@ export default function SpeakerReg() {
           {/* ===================== */}
 
           {/* Main Info : 2 */}
-          <div className="bio my-5" style={{ display: show2 ? "block" : "none" }}>
+          <div
+            className="bio my-5"
+            style={{ display: show2 ? "block" : "none" }}
+          >
             <textarea
               name="Bio"
               cols="30"
@@ -435,7 +475,9 @@ export default function SpeakerReg() {
               onChange={handleChange}
             ></textarea>
             {showError2 && userData.Bio.length < 10 && (
-              <span className="m-0 my-0 mb-3 text-danger">Bio Should be More 10 characters</span>
+              <span className="m-0 my-0 mb-3 text-danger">
+                Bio Should be More 10 characters
+              </span>
             )}
             <div className={style.form}>
               {/* Input */}
@@ -551,15 +593,19 @@ export default function SpeakerReg() {
           {/* ===================== */}
 
           {/* Main Info : 3 */}
-          <div className="speaker-uploads" style={{ display: show3 ? "block" : "none" }}>
+          <div
+            className="speaker-uploads"
+            style={{ display: show3 ? "block" : "none" }}
+          >
             <div
-              className=" my-5 d-flex justify-content-between flex-wrap gap-3"
+              className=" my-5 d-flex justify-content-center justify-content-xl-between flex-wrap gap-3"
               style={{ display: !show && !show2 && show3 ? "block" : "none" }}
             >
               <div className="elem">
                 <div className="text-muted my-2">
                   <i className="fas fa-arrow-up border border-secondary rounded fa-xs p-2 "></i>{" "}
-                  upload Wlaa Card <div className="text-danger d-inline">(not required)</div>
+                  upload Wlaa Card{" "}
+                  <div className="text-danger d-inline">(not required)</div>
                 </div>
                 <div
                   className="input-group"
@@ -578,10 +624,15 @@ export default function SpeakerReg() {
                   >
                     <img src={upload} alt="upload files" width="80px" />
                     <div className="text-center my-0">
-                      Drag and Drop image <p className="text-info d-inline">here</p>
+                      Drag and Drop image{" "}
+                      <p className="text-info d-inline">here</p>
                     </div>
                     <div className="text-center my-0">
-                      or <p className="text-info d-inline text-decoration-down">upload</p> image
+                      or{" "}
+                      <p className="text-info d-inline text-decoration-down">
+                        upload
+                      </p>{" "}
+                      image
                     </div>
                   </label>
                 </div>
@@ -603,11 +654,18 @@ export default function SpeakerReg() {
                     <div className="d-flex justify-content-center gap-3 align-items-center px-3">
                       <img src={pdf} alt="Wlaa Card" width="80px" />
                       <div>
-                        <p className="p-0 m-0 my-1 fs-5">{userData.WalaaCarFile.name}</p>
+                        <p className="p-0 m-0 my-1 fs-5">
+                          {userData.WalaaCarFile.name}
+                        </p>
                         <p className="p-0 m-0 my-1 text-muted">
                           {userData.WalaaCarFile.size > 1024 * 1024
-                            ? `${(userData.WalaaCarFile.size / (1024 * 1024)).toFixed(2)} MB`
-                            : `${(userData.WalaaCarFile.size / 1024).toFixed(2)} KB`}
+                            ? `${(
+                                userData.WalaaCarFile.size /
+                                (1024 * 1024)
+                              ).toFixed(2)} MB`
+                            : `${(userData.WalaaCarFile.size / 1024).toFixed(
+                                2
+                              )} KB`}
                         </p>
                       </div>
                       <button
@@ -630,7 +688,9 @@ export default function SpeakerReg() {
                 </div>
                 <div
                   className="input-group"
-                  style={{ display: userData.PassportImageFile ? "none" : "block" }}
+                  style={{
+                    display: userData.PassportImageFile ? "none" : "block",
+                  }}
                 >
                   <input
                     type="file"
@@ -645,10 +705,15 @@ export default function SpeakerReg() {
                   >
                     <img src={upload} alt="upload files" width="80px" />
                     <div className="text-center my-0">
-                      Drag and Drop image <p className="text-info d-inline">here</p>
+                      Drag and Drop image{" "}
+                      <p className="text-info d-inline">here</p>
                     </div>
                     <div className="text-center my-0">
-                      or <p className="text-info d-inline text-decoration-down">upload</p> image
+                      or{" "}
+                      <p className="text-info d-inline text-decoration-down">
+                        upload
+                      </p>{" "}
+                      image
                     </div>
                   </label>
                 </div>
@@ -659,7 +724,9 @@ export default function SpeakerReg() {
                       display: userData.PassportImageFile ? "block" : "none",
                       width: "300px",
                       height: "230px",
-                      backgroundImage: `url(${URL.createObjectURL(userData.PassportImageFile)})`,
+                      backgroundImage: `url(${URL.createObjectURL(
+                        userData.PassportImageFile
+                      )})`,
                       backgroundSize: "cover",
                       backgroundPosition: "center",
                       backgroundRepeat: "no-repeat",
@@ -702,10 +769,15 @@ export default function SpeakerReg() {
                   >
                     <img src={upload} alt="upload files" width="80px" />
                     <div className="text-center my-0">
-                      Drag and Drop image <p className="text-info d-inline">here</p>
+                      Drag and Drop image{" "}
+                      <p className="text-info d-inline">here</p>
                     </div>
                     <div className="text-center my-0">
-                      or <p className="text-info d-inline text-decoration-down">upload</p> image
+                      or{" "}
+                      <p className="text-info d-inline text-decoration-down">
+                        upload
+                      </p>{" "}
+                      image
                     </div>
                   </label>
                 </div>
@@ -727,10 +799,14 @@ export default function SpeakerReg() {
                     <div className="d-flex justify-content-center gap-3 align-items-center px-3">
                       <img src={pdf} alt="Wlaa Card" width="80px" />
                       <div>
-                        <p className="p-0 m-0 my-1 fs-5">{userData.CvFile.name}</p>
+                        <p className="p-0 m-0 my-1 fs-5">
+                          {userData.CvFile.name}
+                        </p>
                         <p className="p-0 m-0 my-1 text-muted">
                           {userData.CvFile.size > 1024 * 1024
-                            ? `${(userData.CvFile.size / (1024 * 1024)).toFixed(2)} MB`
+                            ? `${(userData.CvFile.size / (1024 * 1024)).toFixed(
+                                2
+                              )} MB`
                             : `${(userData.CvFile.size / 1024).toFixed(2)} KB`}
                         </p>
                       </div>
@@ -747,25 +823,28 @@ export default function SpeakerReg() {
                 )}
               </div>
             </div>
+            <div className="d-flex justify-content-center justify-content-xl-start">
 
-            <div
-              className="btn btn-info text-white fw-bold px-5 fs-5"
-              style={{ background: "#3296d4" }}
-              onClick={() => {
-                setShow(false);
-                setShow2(true);
-                setShow3(false);
-              }}
-            >
-              Back
-            </div>
+              <div
+                className="btn btn-info text-white fw-bold px-5 fs-5"
+                style={{ background: "#3296d4" }}
+                onClick={() => {
+                  setShow(false);
+                  setShow2(true);
+                  setShow3(false);
+                }}
+              >
+                Back
+              </div>
 
-            <div
-              className="btn btn-info text-white fw-bold px-5 fs-5 mx-3"
-              style={{ background: "#3296d4" }}
-              onClick={handleSubmit}
-            >
-              Finish
+              <div
+                className="btn btn-info text-white fw-bold px-5 fs-5 mx-3"
+                style={{ background: "#3296d4" }}
+                onClick={handleSubmit}
+              >
+                Finish
+              </div>
+
             </div>
           </div>
 
@@ -775,7 +854,11 @@ export default function SpeakerReg() {
 
       {
         // Verification Case
-        !regCase && <Verfication email={userData.Email ? userData.Email : ""}></Verfication>
+        !regCase && (
+          <Verfication
+            email={userData.Email ? userData.Email : ""}
+          ></Verfication>
+        )
       }
     </>
   );

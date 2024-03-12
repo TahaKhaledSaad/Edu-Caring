@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function Support() {
   const [popupVisible, setPopupVisible] = useState(false);
@@ -36,7 +36,7 @@ export default function Support() {
 
         {popupVisible && (
           <div
-            className={`support-popup ${
+            className={`support-popup shadow-lg ${
               popupVisible ? "slide-in" : "slide-out"
             }`}
           >

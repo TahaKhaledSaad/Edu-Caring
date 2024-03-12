@@ -53,7 +53,9 @@ export default function AttendanceReg() {
 
   // [3] Confirm Password Visibility
   const toggleConfirmPasswordVisibility = () => {
-    setShowConfirmPassword((prevShowConfirmPassword) => !prevShowConfirmPassword);
+    setShowConfirmPassword(
+      (prevShowConfirmPassword) => !prevShowConfirmPassword
+    );
   };
 
   // [4] Handle Country Change
@@ -90,12 +92,16 @@ export default function AttendanceReg() {
 
     try {
       let result = await axios
-        .post("http://hossamelhadad-001-site12.atempurl.com/api/Auth/UserRegister", formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            Accept: "text/plain",
-          },
-        })
+        .post(
+          "http://hossamelhadad-001-site12.atempurl.com/api/Auth/UserRegister",
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+              Accept: "text/plain",
+            },
+          }
+        )
         .then((res) => {
           console.log(res.data);
           // Set Token && Roles && UserId
@@ -124,7 +130,9 @@ export default function AttendanceReg() {
   const [specializationCategories, setSpecializationCategories] = useState([]);
   useEffect(() => {
     axios
-      .get("http://hossamelhadad-001-site12.atempurl.com/api/MainData/GetAllSpecialization")
+      .get(
+        "http://hossamelhadad-001-site12.atempurl.com/api/MainData/GetAllSpecialization"
+      )
       .then((res) => {
         setSpecializationCategories(res.data.responseObject);
       })
@@ -135,7 +143,9 @@ export default function AttendanceReg() {
   const [genders, setGenders] = useState([]);
   useEffect(() => {
     axios
-      .get("http://hossamelhadad-001-site12.atempurl.com/api/MainData/GetAllGender")
+      .get(
+        "http://hossamelhadad-001-site12.atempurl.com/api/MainData/GetAllGender"
+      )
       .then((res) => {
         setGenders(res.data.responseObject);
       })
@@ -144,7 +154,10 @@ export default function AttendanceReg() {
 
   return (
     <>
-      <div className={style.container} style={{ display: regCase ? "block" : "none" }}>
+      <div
+        className={style.container}
+        style={{ display: regCase ? "block" : "none" }}
+      >
         {/* Header */}
         <div className={style.header}>
           {/* Before Uploading */}
@@ -173,7 +186,9 @@ export default function AttendanceReg() {
               style={{
                 width: "150px",
                 height: "150px",
-                backgroundImage: `url(${URL.createObjectURL(userData.ProfileImageFile)})`,
+                backgroundImage: `url(${URL.createObjectURL(
+                  userData.ProfileImageFile
+                )})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
@@ -211,7 +226,9 @@ export default function AttendanceReg() {
                 />
               </div>
               {showError && userData.NameAr.length < 3 && (
-                <span className="m-0 my-0 text-danger">Name Should be More 3 characters</span>
+                <span className="m-0 my-0 text-danger">
+                  Name Should be More 3 characters
+                </span>
               )}
             </div>
 
@@ -227,7 +244,9 @@ export default function AttendanceReg() {
                 />
               </div>
               {showError && userData.NameEn.length < 3 && (
-                <span className="m-0 my-0 text-danger">Name Should be More 3 characters</span>
+                <span className="m-0 my-0 text-danger">
+                  Name Should be More 3 characters
+                </span>
               )}
             </div>
 
@@ -235,7 +254,12 @@ export default function AttendanceReg() {
             <div>
               <div className={style.input}>
                 <i className="fa-regular fa-envelope"></i>
-                <input type="email" placeholder="email" name="Email" onChange={handleChange} />
+                <input
+                  type="email"
+                  placeholder="email"
+                  name="Email"
+                  onChange={handleChange}
+                />
               </div>
               {showError && !userData.Email.includes("@") && (
                 <span className="m-0 my-0 text-danger">Invalid Email</span>
@@ -253,7 +277,9 @@ export default function AttendanceReg() {
                 name="PhoneNumber"
               />
               {showError && userData.PhoneNumber.length < 10 && (
-                <span className="m-0 my-0 text-danger">Invalid Phone Number</span>
+                <span className="m-0 my-0 text-danger">
+                  Invalid Phone Number
+                </span>
               )}
             </div>
 
@@ -277,11 +303,21 @@ export default function AttendanceReg() {
             {/* input */}
             <div>
               <div className={style.input}>
-                <select name="GenderId" className="p-0 px-2 text-muted" onChange={handleChange}>
+                <select
+                  name="GenderId"
+                  className="p-0 px-2 text-muted"
+                  onChange={handleChange}
+                >
                   {genders.map((gender, index) => (
                     <option
                       key={index}
-                      value={gender.name === "Male" ? 1 : gender.name === "Female" ? 2 : 3}
+                      value={
+                        gender.name === "Male"
+                          ? 1
+                          : gender.name === "Female"
+                          ? 2
+                          : 3
+                      }
                     >
                       {gender.name}
                     </option>
@@ -344,7 +380,9 @@ export default function AttendanceReg() {
                 />
               </div>
               {showError && userData.Country.length < 3 && (
-                <span className="m-0 my-0 text-danger">Please Select The Country</span>
+                <span className="m-0 my-0 text-danger">
+                  Please Select The Country
+                </span>
               )}
             </div>
 
@@ -363,7 +401,9 @@ export default function AttendanceReg() {
                 />
               </div>
               {showError && userData.City.length < 3 && (
-                <span className="m-0 my-0 text-danger">Please Select The City</span>
+                <span className="m-0 my-0 text-danger">
+                  Please Select The City
+                </span>
               )}
             </div>
 
@@ -385,7 +425,9 @@ export default function AttendanceReg() {
                 ></i>
               </div>
               {showError && userData.Password.length < 8 && (
-                <span className="m-0 my-0 text-danger">Passoword Should be More 8 characters</span>
+                <span className="m-0 my-0 text-danger">
+                  Passoword Should be More 8 characters
+                </span>
               )}
             </div>
 
@@ -439,7 +481,7 @@ export default function AttendanceReg() {
         </form>
         <p className="my-2" style={{ fontSize: "17px" }}>
           I Already have an Account? &nbsp;
-          <Link to="/login" className="fw-bold">
+          <Link to="/login" className="fw-bold" style={{ color: "#3296d4" }}>
             Sign In
           </Link>
         </p>
@@ -447,7 +489,11 @@ export default function AttendanceReg() {
 
       {
         // Verification Case
-        !regCase && <Verfication email={userData.Email ? userData.Email : ""}></Verfication>
+        !regCase && (
+          <Verfication
+            email={userData.Email ? userData.Email : ""}
+          ></Verfication>
+        )
       }
     </>
   );
