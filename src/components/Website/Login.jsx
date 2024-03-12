@@ -32,7 +32,7 @@ export default function Login() {
       cookies.set("roles", res.data.responseObject.roles);
       cookies.set("userId", res.data.responseObject.userID);
       // Set Navigation
-      window.location.pathname = "myevents";
+      window.location.pathname = "home";
     } catch (error) {
       console.log(error);
       if (error.response.status === 401) {
