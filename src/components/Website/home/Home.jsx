@@ -1,4 +1,4 @@
-import { Outlet, Link, useLocation } from "react-router-dom";
+import { Outlet, Link, useLocation, useParams } from "react-router-dom";
 import SideBar from "../SideBar/SideBar";
 import TopBar from "../topBar/TopBar";
 import { useState, useEffect } from "react";
@@ -14,10 +14,9 @@ export default function Home() {
 
   const cookie = new Cookie();
   const userId = cookie.get("userId");
-  console.log(userId);
 
   const [events, setEvents] = useState([]);
-  
+
   useEffect(() => {
     axios
       .get(`${BASE}/Event/GetUpCommingForApp`, {
@@ -30,7 +29,6 @@ export default function Home() {
         },
       })
       .then((data) => {
-        console.log(data);
         setEvents(data.data.responseObject.events);
       })
       .catch((err) => console.log(err));
@@ -44,10 +42,9 @@ export default function Home() {
         params: {
           limite: 1000,
           skip: 0,
-        }
+        },
       })
       .then((data) => {
-        console.log(data);
         setrecommendEvents(data.data.responseObject);
       })
       .catch((err) => console.log(err));
@@ -80,42 +77,50 @@ export default function Home() {
             <div className="coming-events">
               <h3 className="fw-bold mb-4">Upcoming Events</h3>
               <div className="events">
+                {events.map((event) => (
+                  <Link
+                    key={event.id}
+                    className="event"
+                    to={`event/${event.id}`}
+                  >
+                    <img src={event.displayPrimeImageURL} alt="event-Img" />
 
-              {events.map((event) => (
-              <Link key={event.id} className="event" to={`/event/${event.id}`}>
-                <img src={event.displayPrimeImageURL} alt="event-Img" />
-
-                <div className="content">
-                  <div className="txt">
-                    <h5>{event.nameEn}</h5>
-                    <div className="info">
-                      <div className="location">
-                        <i className="bi bi-geo-alt-fill"></i>
-                        <span>{event.eventDays[0].address}</span>
+                    <div className="content">
+                      <div className="txt">
+                        <h5>{event.nameEn}</h5>
+                        <div className="info">
+                          <div className="location">
+                            <i className="bi bi-geo-alt-fill"></i>
+                            <span>{event.eventDays[0].address}</span>
+                          </div>
+                          <div className="money">
+                            <i className="bi bi-cash-stack"></i>
+                            {event.totalPrice}
+                          </div>
+                        </div>
                       </div>
-                      <div className="money">
-                        <i className="bi bi-cash-stack"></i>
-                        {event.totalPrice}
+
+                      <div className="date">
+                        <p className="day m-0">
+                          {new Date(event.startDay).toLocaleDateString(
+                            "en-US",
+                            {
+                              day: "numeric",
+                            }
+                          )}
+                        </p>
+                        <p className="month">
+                          {new Date(event.startDay).toLocaleDateString(
+                            "en-US",
+                            {
+                              month: "short",
+                            }
+                          )}
+                        </p>
                       </div>
                     </div>
-                  </div>
-
-                  <div className="date">
-                    <p className="day m-0">
-                      {new Date(event.startDay).toLocaleDateString("en-US", {
-                        day: "numeric",
-                      })}
-                    </p>
-                    <p className="month">
-                      {new Date(event.startDay).toLocaleDateString("en-US", {
-                        month: "short",
-                      })}
-                    </p>
-                  </div>
-                </div>
-              </Link>
-            ))}
-
+                  </Link>
+                ))}
               </div>
             </div>
 
@@ -126,7 +131,7 @@ export default function Home() {
                   <Link
                     key={event.id}
                     className="event"
-                    to={`/event/${event.id}`}
+                    to={`event/${event.id}`}
                   >
                     <img src={event.displayPrimeImageURL} alt="event-Img" />
 

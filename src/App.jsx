@@ -12,6 +12,7 @@ import MyEvents from "./components/Website/myEvents/MyEvents.jsx";
 import Home from "./components/Website/home/Home.jsx";
 import Community from "./components/Website/community/Community.jsx";
 import Profile from "./components/Website/Profile/Profile.jsx";
+import Event from "./components/Website/Event/Event.jsx";
 // import Home from "./components/Website/home/Home.jsx";
 
 // import Verfication from "./components/Website/verfiy-number/Verfication.jsx";
@@ -35,8 +36,8 @@ function App() {
 
         <Route element={<RequireAuth />}>
           <Route path="/home" element={<Home />}>
+          <Route path="event/:eventId" element={<Event />}></Route>
             <Route path="myevents" element={<MyEvents />} />
-            {/* <Route path="/event/:eventId" element={<Event></Event>}></Route> */}
             <Route path="community" element={<Community />} />
             <Route path="profile" element={<Profile />} />
           </Route>

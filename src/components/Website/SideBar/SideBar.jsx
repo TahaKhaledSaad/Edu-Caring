@@ -16,7 +16,7 @@ function SideBar() {
     <>
       <div className="d-flex flex-column justify-content-between p-2 sideBar shadow-sm">
         <Link to="home" className="" onClick={() => handleSetActiveLink("home")}>
-          <img src={logo} alt="logo" />
+          <img src={logo} alt="logo" className="mw-100 h-auto" />
         </Link>
         <hr className="opacity-0" />
         <ul className="nav nav-pills flex-column mb-auto">
