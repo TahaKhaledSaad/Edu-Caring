@@ -13,7 +13,7 @@ import Home from "./components/Website/home/Home.jsx";
 import Community from "./components/Website/community/Community.jsx";
 import Profile from "./components/Website/Profile/Profile.jsx";
 import Event from "./components/Website/Event/Event.jsx";
-// import Home from "./components/Website/home/Home.jsx";
+import Payment from "./components/Website/payment/Payment.jsx"
 
 // import Verfication from "./components/Website/verfiy-number/Verfication.jsx";
 // import SideBar from "./components/Website/SideBar/SideBar";
@@ -40,6 +40,7 @@ function App() {
             <Route path="myevents" element={<MyEvents />} />
             <Route path="community" element={<Community />} />
             <Route path="profile" element={<Profile />} />
+            <Route path="payment" element={<Payment/>}/>
           </Route>
         </Route>
       </Routes>

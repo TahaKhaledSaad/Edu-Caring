@@ -115,7 +115,7 @@ export default function EventDetails() {
               </div>
 
               <Link
-                to="/payment"
+                to="payment"
                 className="p-1 border text-white text-center"
                 style={{
                   background: "#3296D4",
@@ -215,7 +215,7 @@ export default function EventDetails() {
             <h5 className="text-center">Speakers</h5>
             <div className="d-flex flex-wrap gap-3 justify-content-center">
               {eventDetails.eventDays[0].eventDaySpeakers.map((s, i) => (
-                <Link to={`speakerProfile/${s.id}`} key={i}>
+                <Link to={`Profile/${s.id}`} key={i}>
                   {s.speaker.displayProfileImage ? (
                     <img
                       src={s.speaker.displayProfileImage}
