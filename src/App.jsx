@@ -36,7 +36,7 @@ function App() {
 
         <Route element={<RequireAuth />}>
           <Route path="/home" element={<Home />}>
-          <Route path="event/:eventId" element={<Event />}></Route>
+            <Route path="event/:eventId" element={<Event />} />
             <Route path="myevents" element={<MyEvents />} />
             <Route path="community" element={<Community />} />
             <Route path="profile" element={<Profile />} />
@@ -48,54 +48,3 @@ function App() {
 }
 
 export default App;
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-// <>
-//   <div className="d-flex min-vh-100">
-//     <div className="col-auto">
-//       <SideBar></SideBar>
-//     </div>
-//     <div className="flex-grow-1">
-//       <TopBar></TopBar>
-//     <Routes>
-//       <Route path="/" element={<Home></Home>}></Route>
-//       <Route path="home" element={<Home></Home>}></Route>
-//       <Route path="community" element={<Community></Community>}></Route>
-//       <Route path="profile" element={<Profile></Profile>}></Route>
-//       <Route path="myevents" element={<MyEvents></MyEvents>}></Route>
-//       <Route path="*" element={<NotFoundPage></NotFoundPage>}></Route>
-//     </Routes>
-//     </div>
-//   </div>
-// </>

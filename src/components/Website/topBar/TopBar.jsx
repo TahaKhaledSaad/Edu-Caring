@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Language from "./Language";
 import Support from "./Support";
 import Notification from "./Notification";

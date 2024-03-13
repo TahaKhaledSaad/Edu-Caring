@@ -1,11 +1,5 @@
-import React, { useEffect, useState } from "react";
-import eventImg1 from "../../../assets/event-img1.jpeg";
-import eventImg2 from "../../../assets/event-img2.jpeg";
-import eventImg3 from "../../../assets/event-img3.jpeg";
+import { useEffect, useState } from "react";
 import map from "../../../assets/map.jpeg";
-import speakerImg1 from "../../../assets/speaker-img1.jpeg";
-import speakerImg2 from "../../../assets/speaker-img2.jpeg";
-import speakerImg3 from "../../../assets/speaker-img3.jpeg";
 import Carousel from "react-bootstrap/Carousel";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
@@ -55,10 +49,10 @@ export default function EventDetails() {
     return { formattedDate, formattedTime };
   };
   const { startDay, endDay } = eventDetails;
-  const { formattedDate: startDate, formattedTime: startTime } =
-    formatDateTime(startDay);
-  const { formattedDate: endDate, formattedTime: endTime } =
-    formatDateTime(endDay);
+  const { formattedDate: startDate, formattedTime: startTime } = formatDateTime(startDay);
+  const { formattedDate: endDate, formattedTime: endTime } = formatDateTime(endDay);
+
+  console.log(eventDetails.eventImages);
 
   return (
     <>
@@ -69,7 +63,7 @@ export default function EventDetails() {
               <img
                 src={image.displayImageURL}
                 className="d-block w-100"
-                style={{ height: "55vh" }}
+                style={{ height: "55vh", objectFit: "cover" }}
                 alt={`Event Image ${index}`}
               />
             </Carousel.Item>
@@ -88,9 +82,7 @@ export default function EventDetails() {
                 }}
               >
                 <span>{eventDetails.eventDays[0].latitude}</span>
-                <span className="text-secondary mx-1">
-                  /{eventDetails.eventDays[0].longitude}
-                </span>
+                <span className="text-secondary mx-1">/{eventDetails.eventDays[0].longitude}</span>
                 <svg
                   width="18"
                   height="18"
@@ -132,9 +124,7 @@ export default function EventDetails() {
                   fontSize: "14px",
                 }}
               >
-                <span className="mx-1">
-                  Buy ticket {eventDetails.totalPrice} SAR
-                </span>
+                <span className="mx-1">Buy ticket {eventDetails.totalPrice} SAR</span>
                 <svg
                   width="18"
                   height="18"
@@ -167,10 +157,7 @@ export default function EventDetails() {
               </Link>
             </div>
 
-            <div
-              className="general my-3"
-              style={{ borderBottom: "1px solid #DCDCDC" }}
-            >
+            <div className="general my-3" style={{ borderBottom: "1px solid #DCDCDC" }}>
               <h2>{eventDetails.name}</h2>
               <div className="date my-3 d-flex gap-2 align-items-center">
                 <svg
@@ -180,13 +167,7 @@ export default function EventDetails() {
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <rect
-                    width="48"
-                    height="48"
-                    rx="8"
-                    fill="#3296D4"
-                    fillOpacity="0.1"
-                  />
+                  <rect width="48" height="48" rx="8" fill="#3296D4" fillOpacity="0.1" />
                   <path
                     d="M28.75 15.56V14C28.75 13.59 28.41 13.25 28 13.25C27.59 13.25 27.25 13.59 27.25 14V15.5H20.75V14C20.75 13.59 20.41 13.25 20 13.25C19.59 13.25 19.25 13.59 19.25 14V15.56C16.55 15.81 15.24 17.42 15.04 19.81C15.02 20.1 15.26 20.34 15.54 20.34H32.46C32.75 20.34 32.99 20.09 32.96 19.81C32.76 17.42 31.45 15.81 28.75 15.56Z"
                     fill="#3296D4"
@@ -207,14 +188,9 @@ export default function EventDetails() {
               </div>
             </div>
 
-            <div
-              className="desc py-2"
-              style={{ borderBottom: "1px solid #DCDCDC" }}
-            >
+            <div className="desc py-2" style={{ borderBottom: "1px solid #DCDCDC" }}>
               <h3>Description</h3>
-              <span
-                style={{ color: "#747688", fontSize: "14px", margin: "10px 0" }}
-              >
+              <span style={{ color: "#747688", fontSize: "14px", margin: "10px 0" }}>
                 {eventDetails.description}
               </span>
             </div>
@@ -227,13 +203,7 @@ export default function EventDetails() {
 
               <a href={eventDetails.eventDays[0].addressGPSLink} target="blank">
                 {" "}
-                <img
-                  src={map}
-                  alt="map"
-                  height={"220px"}
-                  width={"100%"}
-                  className="rounded"
-                />
+                <img src={map} alt="map" height={"220px"} width={"100%"} className="rounded" />
               </a>
             </div>
           </div>
@@ -266,9 +236,7 @@ export default function EventDetails() {
                         alignItems: "center",
                       }}
                     >
-                      <span className="text-dark">
-                        {s.speaker.name.substring(0, 2)}
-                      </span>
+                      <span className="text-dark">{s.speaker.name.substring(0, 2)}</span>
                     </div>
                   )}
                   <p className="text-dark">{s.speaker.name}</p>

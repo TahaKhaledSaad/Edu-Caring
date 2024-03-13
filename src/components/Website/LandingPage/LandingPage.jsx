@@ -106,7 +106,7 @@ export default function LandingPage() {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="myevents">
+                  <Link className="nav-link" to="/home/myevents">
                     Events
                   </Link>
                 </li>

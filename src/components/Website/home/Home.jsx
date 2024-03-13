@@ -1,4 +1,4 @@
-import { Outlet, Link, useLocation, useParams } from "react-router-dom";
+import { Outlet, Link, useLocation } from "react-router-dom";
 import SideBar from "../SideBar/SideBar";
 import TopBar from "../topBar/TopBar";
 import { useState, useEffect } from "react";
@@ -7,7 +7,21 @@ import { BASE } from "../../../Api";
 import "./Home.css";
 import Cookie from "cookie-universal";
 
+// Translation Work
+import { useTranslation } from "react-i18next";
+
 export default function Home() {
+  //--------------------------------------------------------
+  //--------------------------------------------------------
+  // Translation Work
+
+  // const [t, i18n] = useTranslation();
+  // t("key"); // to translate the key to the current language
+  // // i18n.changeLanguage("ar"); // to change the language
+
+  //--------------------------------------------------------
+  //--------------------------------------------------------
+
   // to show the defualt content of the home
   const location = useLocation();
   const isHomeRoute = location.pathname === "/home";
@@ -33,6 +47,8 @@ export default function Home() {
       })
       .catch((err) => console.log(err));
   }, []);
+
+  console.log(events);
 
   const [recommendEvents, setrecommendEvents] = useState([]);
 
@@ -78,11 +94,7 @@ export default function Home() {
               <h3 className="fw-bold mb-4">Upcoming Events</h3>
               <div className="events">
                 {events.map((event) => (
-                  <Link
-                    key={event.id}
-                    className="event"
-                    to={`event/${event.id}`}
-                  >
+                  <Link key={event.id} className="event" to={`event/${event.id}`}>
                     <img src={event.displayPrimeImageURL} alt="event-Img" />
 
                     <div className="content">
@@ -102,20 +114,14 @@ export default function Home() {
 
                       <div className="date">
                         <p className="day m-0">
-                          {new Date(event.startDay).toLocaleDateString(
-                            "en-US",
-                            {
-                              day: "numeric",
-                            }
-                          )}
+                          {new Date(event.startDay).toLocaleDateString("en-US", {
+                            day: "numeric",
+                          })}
                         </p>
                         <p className="month">
-                          {new Date(event.startDay).toLocaleDateString(
-                            "en-US",
-                            {
-                              month: "short",
-                            }
-                          )}
+                          {new Date(event.startDay).toLocaleDateString("en-US", {
+                            month: "short",
+                          })}
                         </p>
                       </div>
                     </div>
@@ -128,11 +134,7 @@ export default function Home() {
               <h4 className="fw-bold mb-4">Recommendations for you</h4>
               <div className="events d-flex gap-4 flex-wrap justify-content-center align-items-center">
                 {recommendEvents.map((event) => (
-                  <Link
-                    key={event.id}
-                    className="event"
-                    to={`event/${event.id}`}
-                  >
+                  <Link key={event.id} className="event" to={`event/${event.id}`}>
                     <img src={event.displayPrimeImageURL} alt="event-Img" />
 
                     <div className="info">
@@ -146,12 +148,8 @@ export default function Home() {
                         {event.eventDays[0].address}
                       </p>
                       <div className="btns">
-                        {event.isOnline && (
-                          <span className="online">online</span>
-                        )}
-                        {event.offline && (
-                          <span className="offline">offline</span>
-                        )}
+                        {event.isOnline && <span className="online">online</span>}
+                        {event.offline && <span className="offline">offline</span>}
                       </div>
                     </div>
                   </Link>
