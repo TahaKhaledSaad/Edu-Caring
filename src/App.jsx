@@ -13,7 +13,9 @@ import Home from "./components/Website/home/Home.jsx";
 import Community from "./components/Website/community/Community.jsx";
 import Profile from "./components/Website/Profile/Profile.jsx";
 import Event from "./components/Website/Event/Event.jsx";
-import Payment from "./components/Website/payment/Payment.jsx"
+import Payment from "./components/Website/payment/Payment.jsx";
+import SpeakerProfile from "./components/Website/speakerProfile/SpeakerProfile.jsx";
+
 
 // import Verfication from "./components/Website/verfiy-number/Verfication.jsx";
 // import SideBar from "./components/Website/SideBar/SideBar";
@@ -37,10 +39,10 @@ function App() {
         <Route element={<RequireAuth />}>
           <Route path="/home" element={<Home />}>
             <Route path="event/:eventId" element={<Event />} />
+            <Route path="speakerProfile/:eventId/:eventDayId/:speakerId" element={<SpeakerProfile />} />
             <Route path="myevents" element={<MyEvents />} />
             <Route path="community" element={<Community />} />
-            <Route path="profile" element={<Profile />} />
-            <Route path="payment" element={<Payment/>}/>
+            <Route path="payment" element={<Payment />} />
           </Route>
         </Route>
       </Routes>

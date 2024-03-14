@@ -47,9 +47,7 @@ export default function Home() {
       })
       .catch((err) => console.log(err));
   }, []);
-
-  console.log(events);
-
+ 
   const [recommendEvents, setrecommendEvents] = useState([]);
 
   useEffect(() => {
@@ -65,6 +63,7 @@ export default function Home() {
       })
       .catch((err) => console.log(err));
   }, []);
+  // console.log(recommendEvents);
 
   return (
     <div>

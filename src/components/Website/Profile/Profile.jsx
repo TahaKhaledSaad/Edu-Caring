@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Cookie from "cookie-universal";
 import avatar from "./../../../assets/person.jpeg";
+import { BASE } from './../../../Api';
 
 export default function Profile() {
   const [user, setUser] = useState([]);
@@ -13,7 +14,7 @@ export default function Profile() {
   useEffect(() => {
     axios
       .post(
-        "http://hossamelhadad-001-site12.atempurl.com/api/Auth/GetProfile",
+        `${BASE}/Auth/GetProfile`,
         {
           userId: userId,
         },
@@ -31,7 +32,7 @@ export default function Profile() {
   }, []);
 
   console.log(user);
-  console.log(user.profileImage === null);
+  // console.log(user.profileImage === null);
 
   return (
     <div>

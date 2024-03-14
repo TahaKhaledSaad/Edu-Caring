@@ -47,7 +47,7 @@ export default function TopBar() {
         ></i>
         <div
           className={`icons d-flex align-items-center gap-4 ${
-            iconsVisible ? "d-sm-flex" : "d-none d-md-flex"
+            !iconsVisible ? "d-sm-flex" : "d-none d-md-flex"
           }`}
         >
           <Language />
