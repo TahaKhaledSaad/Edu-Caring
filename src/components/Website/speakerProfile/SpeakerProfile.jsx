@@ -2,9 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Cookie from "cookie-universal";
-import speakerImg from "../../../assets/speaker-img3.jpeg";
 import { BASE } from "../../../Api";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 export default function SpeakerProfile() {
   const { eventId, eventDayId, speakerId } = useParams();
@@ -98,7 +97,7 @@ export default function SpeakerProfile() {
     <>
       {speakerObj && (
         <div className="speakerProfile p-4 w-sm-100">
-          <div className="d-flex flex-column flex-md-row align-items-center py-3 gap-2">
+          <div className="d-flex flex-column flex-md-row align-items-center py-3 gap-4">
             <div className="text-center text-md-start">
               {speakerObj.displayProfileImage ? (
                 <img
@@ -126,8 +125,13 @@ export default function SpeakerProfile() {
                 </div>
               )}
 
-              <h4 className="my-2 fw-bold">{speakerObj.name}</h4>
-              <p style={{ color: "#747688" }}>{speakerObj.email}</p>
+              <h4 className="my-2 fw-bold text-center">{speakerObj.name}</h4>
+              <p
+                style={{ color: "#747688" }}
+                className="my-2 fw-bold text-center"
+              >
+                {speakerObj.email}
+              </p>
             </div>
             <button
               className="border-0 p-2 px-3 text-white "

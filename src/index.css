@@ -176,22 +176,40 @@ i {
   transform: translateY(25%);
   z-index: 22;
 }
+@media (max-width: 1150px) {
+  .support-popup {
+    width: 500px;
+    transform: translate(0%, 10%);
+  }
+}
 @media (max-width: 992px) {
   .support-popup {
     width: 400px;
-    transform: translate(-20%, -35%);
   }
 }
-@media (max-width: 650px) {
+@media (max-width: 767px) {
   .support-popup {
-    width: 350px;
+    width: 400px;
     transform: translate(-10%, -35%);
   }
 }
-@media (max-width: 450px) {
+@media (max-width: 600px) {
+  .support-popup {
+    width: 350px;
+    transform: translate(0%, -40%);
+  }
+}
+@media (max-width: 550px) {
   .support-popup {
     width: 250px;
     transform: translate(18%, -35%);
+  }
+}
+
+@media (max-width: 400px) {
+  .support-popup {
+    width: 250px;
+    transform: translate(35%, -35%);
   }
 }
 

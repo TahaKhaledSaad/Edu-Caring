@@ -55,7 +55,7 @@ export default function Home() {
       })
       .catch((err) => console.log(err));
   }, []);
-  // console.log(recommendEvents);
+  console.log(events);
 
   return (
     <div>
@@ -90,7 +90,7 @@ export default function Home() {
 
                     <div className="content">
                       <div className="txt">
-                        <h5>{event.nameEn}</h5>
+                        <h5 className="text-start">{event.name}</h5>
                         <div className="info">
                           <div className="location">
                             <i className="bi bi-geo-alt-fill"></i>

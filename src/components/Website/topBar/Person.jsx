@@ -7,7 +7,7 @@ export default function Person() {
 
   const cookie = new Cookie();
   const userId = cookie.get("userId");
-  console.log(userId);
+  // console.log(userId);
 
   useEffect(() => {
     axios
@@ -29,7 +29,7 @@ export default function Person() {
       .catch((err) => console.log(err));
   }, []);
 
-  console.log(user);
+  // console.log(user);
   return (
     <>
       <div className="person d-flex gap-3 align-items-center">
@@ -44,7 +44,14 @@ export default function Person() {
             }}
             className="d-flex justify-content-center align-items-center text-white fs-5"
           >
-            {user.nameEn && user.nameEn.split(" ")[0][0] + user.nameEn.split(" ")[1][0]}
+            <span
+              className="text-dark fs-3 fw-bold"
+              style={{ userSelect: "none" }}
+            >
+              {user.nameEn && user.nameEn.substring(0, 2).toUpperCase()}
+            </span>
+            {/* {user.nameEn &&
+              user.nameEn.split(" ")[0][0] + user.nameEn.split(" ")[1][0]} */}
           </div>
         )}
         <div className="details mt-2">
