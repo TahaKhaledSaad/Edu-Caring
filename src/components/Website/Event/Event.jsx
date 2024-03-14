@@ -5,8 +5,13 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { BASE } from "../../../Api";
 import Cookie from "cookie-universal";
+// Translation Work
+// import { useTranslation } from "react-i18next";
 
 export default function EventDetails() {
+  // Translation Work
+  // const { i18n } = useTranslation();
+
   const { eventId } = useParams();
   const [eventDetails, setEventDetails] = useState(null);
   const cookie = new Cookie();

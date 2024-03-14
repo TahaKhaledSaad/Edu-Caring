@@ -1,4 +1,3 @@
-import React from "react";
 import eventImg from "../../../assets/event-img1.jpeg";
 import { Link } from "react-router-dom";
 export default function Payment() {

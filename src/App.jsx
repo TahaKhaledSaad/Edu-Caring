@@ -42,7 +42,8 @@ function App() {
             <Route path="speakerProfile/:eventId/:eventDayId/:speakerId" element={<SpeakerProfile />} />
             <Route path="myevents" element={<MyEvents />} />
             <Route path="community" element={<Community />} />
-            <Route path="payment" element={<Payment />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="payment" element={<Payment/>}/>
           </Route>
         </Route>
       </Routes>

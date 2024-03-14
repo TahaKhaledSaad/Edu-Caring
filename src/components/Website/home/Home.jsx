@@ -11,16 +11,8 @@ import Cookie from "cookie-universal";
 import { useTranslation } from "react-i18next";
 
 export default function Home() {
-  //--------------------------------------------------------
-  //--------------------------------------------------------
   // Translation Work
-
-  // const [t, i18n] = useTranslation();
-  // t("key"); // to translate the key to the current language
-  // // i18n.changeLanguage("ar"); // to change the language
-
-  //--------------------------------------------------------
-  //--------------------------------------------------------
+  const { i18n } = useTranslation();
 
   // to show the defualt content of the home
   const location = useLocation();
@@ -137,7 +129,7 @@ export default function Home() {
                     <img src={event.displayPrimeImageURL} alt="event-Img" />
 
                     <div className="info">
-                      <h6>{event.nameEn}</h6>
+                      <h6>{i18n.language === "en" ? event.nameEn : event.nameAr}</h6>
                       <p>
                         <i className="fa-solid fa-calendar-days"></i>
                         05 Mars, 2023
@@ -147,8 +139,8 @@ export default function Home() {
                         {event.eventDays[0].address}
                       </p>
                       <div className="btns">
-                        {event.isOnline && <span className="online">online</span>}
-                        {event.offline && <span className="offline">offline</span>}
+                        {event.isOnline && <span className="online">{ i18n.language === 'en'? 'Online': 'بث مباشر' }</span>}
+                        {event.offline && <span className="offline">{ i18n.language === 'en'? 'Offline': 'مكان محدد' }</span>}
                       </div>
                     </div>
                   </Link>

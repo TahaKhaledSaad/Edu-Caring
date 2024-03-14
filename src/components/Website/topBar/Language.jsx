@@ -1,8 +1,14 @@
 import ar from "../../../assets/sudia-arabia-flag.png";
 import en from "../../../assets/united-state-flag.png";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function Language() {
+  // Translation Work
+  const { i18n } = useTranslation();
+  // console.log(t("key")); // to translate the key to the current language
+
+  //
   const [chosenLang, setChosenLang] = useState({
     img: en,
     name: "english",
@@ -19,6 +25,7 @@ export default function Language() {
       setChosenLang({ img: imgSrc, name: langName });
       setPopupVisible(false);
       setActiveChoice(option);
+      langName === "english" ? i18n.changeLanguage("en") : i18n.changeLanguage("ar");
     };
   }
 
@@ -27,11 +34,7 @@ export default function Language() {
       <div className="chosen" onClick={handleChosenClick}>
         <img src={chosenLang.img} alt="" width="30" height="30" />
         <span>{chosenLang.name}</span>
-        <i
-          className={`fa-solid fa-chevron-${
-            popupVisible ? "up" : "down"
-          } fa-xs`}
-        ></i>
+        <i className={`fa-solid fa-chevron-${popupVisible ? "up" : "down"} fa-xs`}></i>
         <div
           className="chosLang"
           style={{
