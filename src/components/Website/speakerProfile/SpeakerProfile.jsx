@@ -117,6 +117,7 @@ export default function SpeakerProfile() {
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
+                    margin: " 0 auto",
                   }}
                 >
                   <span className="text-dark fs-1 fw-bold">
