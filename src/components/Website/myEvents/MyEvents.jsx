@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Cookie from "cookie-universal";
+import "./MyEvents.css"
 
 
 export default function MyEvents() {
