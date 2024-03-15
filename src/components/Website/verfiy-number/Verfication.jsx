@@ -43,7 +43,7 @@ export default function Verfication(props) {
         }
       );
       console.log("OTP Sent:", response.data);
-      window.location.pathname = "myevents";
+      window.location.pathname = "home/myevents";
     } catch (error) {
       console.error("Error sending OTP:", error);
     }

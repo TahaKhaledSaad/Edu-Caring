@@ -16,16 +16,6 @@ import Event from "./components/Website/Event/Event.jsx";
 import Payment from "./components/Website/payment/Payment.jsx";
 import SpeakerProfile from "./components/Website/speakerProfile/SpeakerProfile.jsx";
 
-
-// import Verfication from "./components/Website/verfiy-number/Verfication.jsx";
-// import SideBar from "./components/Website/SideBar/SideBar";
-// import Community from "./components/Website/community/Community.jsx";
-// import Profile from "./components/Website/Profile/Profile.jsx";
-// import MyEvents from "./components/Website/myEvents/MyEvents";
-// import RequireAuth from "./components/Website/Register/RequireAuth.js";
-// import NotFoundPage from "./components/Website/Notfound/NotFoundPage.jsx";
-// import TopBar from './components/Website/topBar/TopBar';
-
 function App() {
   return (
     <div>
@@ -39,11 +29,14 @@ function App() {
         <Route element={<RequireAuth />}>
           <Route path="/home" element={<Home />}>
             <Route path="event/:eventId" element={<Event />} />
-            <Route path="speakerProfile/:eventId/:eventDayId/:speakerId" element={<SpeakerProfile />} />
+            <Route
+              path="speakerProfile/:eventId/:eventDayId/:speakerId"
+              element={<SpeakerProfile />}
+            />
             <Route path="myevents" element={<MyEvents />} />
             <Route path="community" element={<Community />} />
             <Route path="profile" element={<Profile />} />
-            <Route path="payment" element={<Payment/>}/>
+            <Route path="payment" element={<Payment />} />
           </Route>
         </Route>
       </Routes>

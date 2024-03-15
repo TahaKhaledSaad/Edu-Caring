@@ -1,4 +1,3 @@
-import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Cookie from "cookie-universal";
@@ -15,6 +14,7 @@ export default function SpeakerProfile() {
   const cookie = new Cookie();
   const userId = cookie.get("userId");
 
+  // Get event details
   useEffect(() => {
     axios
       .get(`${BASE}/Event/GetForApp/${eventId}`, {
@@ -33,34 +33,35 @@ export default function SpeakerProfile() {
       });
   }, [eventId, userId]);
 
+  // Event Day ID
   useEffect(() => {
     if (eventDays) {
-      const selectedEventDay = eventDays.find(
-        (d) => d.id === parseInt(eventDayId)
-      );
+      const selectedEventDay = eventDays.find((d) => d.id === parseInt(eventDayId));
       setEventDay(selectedEventDay);
     }
   }, [eventDays, eventDayId]);
 
+  // Speaker ID
   useEffect(() => {
     if (eventDay) {
-      const selectedSpeaker = eventDay.eventDaySpeakers.find(
-        (s) => s.speakerId === speakerId
-      );
+      const selectedSpeaker = eventDay.eventDaySpeakers.find((s) => s.speakerId === speakerId);
       setSpeakerObj(selectedSpeaker.speaker);
     }
   }, [eventDay, speakerId]);
   console.log(speakerObj);
 
+  // Calculate age
   const [age, setAge] = useState(null);
   function calculateAge(birthDateString) {
+    // Handle the case where birthDateString is null
     if (!birthDateString) {
-      return null; // Handle the case where birthDateString is null
+      return null;
     }
 
+    // Handle the case where birthDateString is not a valid date string
     const birthDate = new Date(birthDateString);
     if (isNaN(birthDate.getTime())) {
-      return null; // Handle the case where birthDateString is not a valid date string
+      return null;
     }
 
     const currentDate = new Date();
@@ -71,10 +72,7 @@ export default function SpeakerProfile() {
     // If the current month is less than the birth month,
     // or if it's the same month but the current day is less than the birth day,
     // the age should be decreased by 1
-    if (
-      monthDiff < 0 ||
-      (monthDiff === 0 && currentDate.getDate() < birthDate.getDate())
-    ) {
+    if (monthDiff < 0 || (monthDiff === 0 && currentDate.getDate() < birthDate.getDate())) {
       age--;
     }
 
@@ -127,10 +125,7 @@ export default function SpeakerProfile() {
               )}
 
               <h4 className="my-2 fw-bold text-center">{speakerObj.name}</h4>
-              <p
-                style={{ color: "#747688" }}
-                className="my-2 fw-bold text-center"
-              >
+              <p style={{ color: "#747688" }} className="my-2 fw-bold text-center">
                 {speakerObj.email}
               </p>
             </div>
@@ -192,13 +187,7 @@ export default function SpeakerProfile() {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <rect
-                  width="24"
-                  height="24"
-                  rx="10"
-                  fill="#3296D4"
-                  fillOpacity="0.1"
-                />
+                <rect width="24" height="24" rx="10" fill="#3296D4" fillOpacity="0.1" />
                 <path
                   d="M9.2251 7V17"
                   stroke="#3296D4"
@@ -232,13 +221,7 @@ export default function SpeakerProfile() {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <rect
-                  width="24"
-                  height="24"
-                  rx="10"
-                  fill="#3296D4"
-                  fillOpacity="0.1"
-                />
+                <rect width="24" height="24" rx="10" fill="#3296D4" fillOpacity="0.1" />
                 <path
                   d="M17.1858 12.5833V13.1666H16.6783C16.2466 13.1666 15.8966 13.5166 15.8966 13.9541V14.1291C15.8966 14.5666 15.5466 14.9166 15.1091 14.9166C14.6774 14.9166 14.3274 14.5666 14.3274 14.1291V13.9541C14.3274 13.5166 13.9716 13.1666 13.5399 13.1666C13.1083 13.1666 12.7583 13.5166 12.7583 13.9541V14.1291C12.7583 14.5666 12.4024 14.9166 11.9708 14.9166C11.5391 14.9166 11.1833 14.5666 11.1833 14.1291V13.9541C11.1833 13.5166 10.8333 13.1666 10.4016 13.1666C9.96992 13.1666 9.61409 13.5166 9.61409 13.9541V14.1291C9.61409 14.5666 9.26409 14.9166 8.83242 14.9166C8.39492 14.9166 8.04492 14.5666 8.04492 14.1291V13.9424C8.04492 13.5108 7.70075 13.1608 7.27492 13.1549H6.81409V12.5833C6.81409 11.7783 7.42075 11.0958 8.24325 10.8974C8.40659 10.8566 8.57575 10.8333 8.75659 10.8333H15.2433C15.4241 10.8333 15.5933 10.8566 15.7566 10.8974C16.5791 11.0958 17.1858 11.7783 17.1858 12.5833Z"
                   fill="#3296D4"
@@ -281,13 +264,7 @@ export default function SpeakerProfile() {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <rect
-                  width="24"
-                  height="24"
-                  rx="10"
-                  fill="#3296D4"
-                  fillOpacity="0.1"
-                />
+                <rect width="24" height="24" rx="10" fill="#3296D4" fillOpacity="0.1" />
                 <path
                   fillRule="evenodd"
                   clipRule="evenodd"

@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Cookie from "cookie-universal";
 import { BASE } from "./../../../Api";
-import personImg from "../../../assets/person.jpeg";
 
 export default function Profile() {
   const [user, setUser] = useState({});
@@ -30,46 +29,175 @@ export default function Profile() {
       })
       .catch((err) => console.log(err));
   }, [userId]);
+  console.log("##########");
   console.log(user);
 
   const handleEditClick = () => setIsEditMode(true);
 
+  // const handleSaveClick = () => {
+  //   setIsEditMode(false);
+  //   // Assuming user is an object containing the data mentioned in your question
+
+  //   // Create a new FormData object
+  //   const formData = new FormData();
+
+  //   // Append each key-value pair to the formData object
+  //   formData.append("PhoneNumber", "55512125215225221");
+  //   formData.append("UserId", "");
+  //   formData.append("Email", "");
+  //   formData.append("NameAr", "");
+  //   formData.append("NameEn", "");
+  //   formData.append("GenderId", "");
+  //   formData.append("ProfileImage", "");
+  //   formData.append("ProfileImageFile", "");
+  //   formData.append("DateOfBirth", "");
+  //   formData.append("City", "");
+  //   formData.append("Country", "");
+  //   formData.append("Specialization", "");
+  //   formData.append("SpecializationCategoryId", "");
+  //   formData.append("PassportNumber", "");
+  //   formData.append("HealthAuthorityNumber", "");
+  //   formData.append("PassportImageFile", "");
+  //   formData.append("CvFile", "");
+  //   formData.append("WalaaCarFile", "");
+  //   formData.append("Bio", "");
+  //   formData.append("CurrentWorkPlace", "");
+  //   formData.append("BankAccount", "");
+  //   formData.append("SaudiAuthorityNumber", "");
+  //   formData.append("ExpYears", "");
+
+  //   // formData.append("PhoneNumber", user.phoneNumber);
+  //   // formData.append("UserId", user.id);
+  //   // formData.append("Email", user.email);
+  //   // formData.append("NameAr", user.nameAr);
+  //   // formData.append("NameEn", user.nameEn);
+  //   // formData.append("GenderId", user.genderId);
+  //   // formData.append("ProfileImage", user.profileImage);
+  //   // formData.append("ProfileImageFile", user.displayProfileImage);
+  //   // formData.append("DateOfBirth", user.dateOfBirth);
+  //   // formData.append("City", user.city);
+  //   // formData.append("Country", user.country);
+  //   // formData.append("Specialization", user.specialization);
+  //   // formData.append("SpecializationCategoryId", user.specializationCategoryId);
+  //   // formData.append("PassportNumber", user.passportNumber);
+  //   // formData.append("HealthAuthorityNumber", user.healthAuthorityNumber);
+  //   // formData.append("PassportImageFile", user.displayPassportImageURL);
+  //   // formData.append("CvFile", user.cvURL);
+  //   // formData.append("WalaaCarFile", user.walaaCardURL);
+  //   // formData.append("Bio", user.bio);
+  //   // formData.append("CurrentWorkPlace", user.currentWorkPlace);
+  //   // formData.append("BankAccount", user.bankAccount);
+  //   // formData.append("SaudiAuthorityNumber", user.saudiAuthorityNumber);
+  //   // formData.append("ExpYears", user.expYears);
+
+  //   // Now formData contains all the key-value pairs
+
+  //   axios
+  //     .put(`${BASE}/Auth/UpdateProfile`, formData, {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Accept: "text/plain",
+  //       },
+  //     })
+  //     .then((data) => {
+  //       console.log("From Put Request:");
+  //       console.log(data);
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
+
+
+  const updatedUserData = {
+    PhoneNumber: user.phoneNumber,
+    UserId: user.id,
+    Email: user.email,
+    NameAr: user.nameAr,
+    NameEn: user.nameEn,
+    GenderId: user.genderId,
+    ProfileImage: user.profileImage,
+    ProfileImageFile: user.displayProfileImage,
+    DateOfBirth: user.dateOfBirth,
+    City: user.city,
+    Country: user.country,
+    Specialization: user.specialization,
+    SpecializationCategoryId: user.specializationCategoryId,
+    PassportNumber: user.passportNumber,
+    HealthAuthorityNumber: user.healthAuthorityNumber,
+    PassportImageFile: user.displayPassportImageURL,
+    CvFile: user.cvURL,
+    WalaaCarFile: user.walaaCardURL,
+    Bio: user.bio,
+    CurrentWorkPlace: user.currentWorkPlace,
+    BankAccount: user.bankAccount,
+    SaudiAuthorityNumber: user.saudiAuthorityNumber,
+    ExpYears: user.expYears,
+  };
+
+  console.log(updatedUserData);
+
   const handleSaveClick = () => {
+    console.log("user form update");
+    console.log(user);
     setIsEditMode(false);
+
+    const formData = new FormData();
+
+    // formData.append("PhoneNumber", user.phoneNumber);
+    // formData.append("UserId", user.id);
+    // formData.append("Email", user.email);
+    // formData.append("NameAr", user.nameAr);
+    // formData.append("NameEn", user.nameEn);
+    // formData.append("GenderId", user.genderId);
+    // formData.append("ProfileImage", user.profileImage);
+    // formData.append("ProfileImageFile", user.displayProfileImage);
+    // formData.append("DateOfBirth", user.dateOfBirth);
+    // formData.append("City", user.city);
+    // formData.append("Country", user.country);
+    // formData.append("Specialization", user.specialization);
+    // formData.append("SpecializationCategoryId", user.specializationCategoryId);
+    // formData.append("PassportNumber", user.passportNumber);
+    // formData.append("HealthAuthorityNumber", user.healthAuthorityNumber);
+    // formData.append("PassportImageFile", user.displayPassportImageURL);
+    // formData.append("CvFile", user.cvURL);
+    // formData.append("WalaaCarFile", user.walaaCardURL);
+    // formData.append("Bio", user.bio);
+    // formData.append("CurrentWorkPlace", user.currentWorkPlace);
+    // formData.append("BankAccount", user.bankAccount);
+    // formData.append("SaudiAuthorityNumber", user.saudiAuthorityNumber);
+    // formData.append("ExpYears", user.expYears);
+
+    const updatedUserData = {
+      PhoneNumber: user.phoneNumber,
+      UserId: user.id,
+      Email: user.email,
+      NameAr: user.nameAr,
+      NameEn: user.nameEn,
+      GenderId: user.genderId,
+      ProfileImage: user.profileImage,
+      ProfileImageFile: user.displayProfileImage,
+      DateOfBirth: user.dateOfBirth,
+      City: user.city,
+      Country: user.country,
+      Specialization: user.specialization,
+      SpecializationCategoryId: user.specializationCategoryId,
+      PassportNumber: user.passportNumber,
+      HealthAuthorityNumber: user.healthAuthorityNumber,
+      PassportImageFile: user.displayPassportImageURL,
+      CvFile: user.cvURL,
+      WalaaCarFile: user.walaaCardURL,
+      Bio: user.bio,
+      CurrentWorkPlace: user.currentWorkPlace,
+      BankAccount: user.bankAccount,
+      SaudiAuthorityNumber: user.saudiAuthorityNumber,
+      ExpYears: user.expYears,
+    };
+
+    console.log(updatedUserData);
+
     axios
-      .put(
-        `${BASE}/Auth/UpdateProfile`,
-        {
-          NameAr: user.nameAr,
-          NameEn: user.nameEn,
-          Email: user.email,
-          PhoneNumber: user.phoneNumber,
-          GenderId: user.genderId,
-          DateOfBirth: user.dateOfBirth,
-          City: user.city,
-          Country: user.country,
-          Specialization: user.specialization,
-          SpecializationCategoryId: user.specializationCategoryId,
-          PassportNumber: user.passportNumber,
-          HealthAuthorityNumber: user.healthAuthorityNumber,
-          PassportImageFile: user.passportImageFile,
-          CvFile: user.cvFile,
-          WalaaCarFile: user.walaaCarFile,
-          Bio: user.bio,
-          CurrentWorkPlace: user.currentWorkPlace,
-          BankAccount: user.bankAccount,
-          SaudiAuthorityNumber: user.saudiAuthorityNumber,
-          ExpYears: user.expYears,
-          UserId: userId,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "text/plain",
-          },
-        }
-      )
+      .put(`${BASE}/Auth/UpdateProfile`, formData)
       .then((data) => {
+        console.log("From Put Request:");
         console.log(data);
       })
       .catch((err) => console.log(err));
@@ -154,9 +282,7 @@ export default function Profile() {
                       className="border-0 mb-1"
                       style={{ outline: "0" }}
                       value={user.nameEn}
-                      onChange={(e) =>
-                        setUser({ ...user, nameEn: e.target.value })
-                      }
+                      onChange={(e) => setUser({ ...user, nameEn: e.target.value })}
                     />
                   </h3>
                   <p>
@@ -165,9 +291,7 @@ export default function Profile() {
                       className="border-0 mb-1 w-50"
                       style={{ outline: "0" }}
                       value={user.email}
-                      onChange={(e) =>
-                        setUser({ ...user, email: e.target.value })
-                      }
+                      onChange={(e) => setUser({ ...user, email: e.target.value })}
                     />
                   </p>
                 </div>
@@ -185,9 +309,7 @@ export default function Profile() {
             >
               <i
                 className={
-                  isEditMode
-                    ? "fa-regular fa-check-square"
-                    : "fa-regular fa-pen-to-square"
+                  isEditMode ? "fa-regular fa-check-square" : "fa-regular fa-pen-to-square"
                 }
               ></i>
               <span className="ms-2">{isEditMode ? "Save" : "Edit"}</span>
@@ -237,9 +359,7 @@ export default function Profile() {
                   className="border-0 mb-1"
                   style={{ outline: "0" }}
                   value={user.phoneNumber}
-                  onChange={(e) =>
-                    setUser({ ...user, phoneNumber: e.target.value })
-                  }
+                  onChange={(e) => setUser({ ...user, phoneNumber: e.target.value })}
                 />
               ) : (
                 <span className="fs-5">{user.phoneNumber}</span>
@@ -256,9 +376,7 @@ export default function Profile() {
 
             <div className="d-flex border rounded p-3 py-2 justify-content-between gap-3 overflow-hidden">
               <div
-                className={`info-item p-2 d-flex flex-column ${
-                  isEditMode ? "edit-mode" : ""
-                }`}
+                className={`info-item p-2 d-flex flex-column ${isEditMode ? "edit-mode" : ""}`}
                 style={{ borderRight: "1px solid #DCDCDC" }}
               >
                 {isEditMode ? (
@@ -267,9 +385,7 @@ export default function Profile() {
                     className="border-0 mb-1"
                     style={{ outline: "0" }}
                     value={formattedDateOfBirth}
-                    onChange={(e) =>
-                      setUser({ formattedDateOfBirth: e.target.value })
-                    }
+                    onChange={(e) => setUser({ formattedDateOfBirth: e.target.value })}
                   />
                 ) : (
                   <span className="fs-5">{formattedDateOfBirth}</span>
@@ -320,9 +436,7 @@ export default function Profile() {
 
             <div className="d-flex border rounded p-3 py-2 justify-content-between gap-3 overflow-hidden">
               <div
-                className={`info-item p-2 d-flex flex-column ${
-                  isEditMode ? "edit-mode" : ""
-                }`}
+                className={`info-item p-2 d-flex flex-column ${isEditMode ? "edit-mode" : ""}`}
                 style={{ borderRight: "1px solid #DCDCDC" }}
               >
                 {isEditMode ? (
@@ -331,15 +445,10 @@ export default function Profile() {
                     className="border-0 mb-1"
                     style={{ outline: "0" }}
                     value={user.country}
-                    onChange={(e) =>
-                      setUser({ ...user, country: e.target.value })
-                    }
+                    onChange={(e) => setUser({ ...user, country: e.target.value })}
                   />
                 ) : (
-                  <span
-                    className="fs-5"
-                    style={{ display: "inline-block", marginRight: "50px" }}
-                  >
+                  <span className="fs-5" style={{ display: "inline-block", marginRight: "50px" }}>
                     {user.country}
                   </span>
                 )}
@@ -389,20 +498,12 @@ export default function Profile() {
                   type="text"
                   className="border-0 mb-1"
                   style={{ outline: "0" }}
-                  value={
-                    user.healthAuthorityNumber
-                      ? user.healthAuthorityNumber
-                      : "NON"
-                  }
-                  onChange={(e) =>
-                    setUser({ ...user, healthAuthorityNumber: e.target.value })
-                  }
+                  value={user.healthAuthorityNumber ? user.healthAuthorityNumber : "NON"}
+                  onChange={(e) => setUser({ ...user, healthAuthorityNumber: e.target.value })}
                 />
               ) : (
                 <span className="fs-5">
-                  {user.healthAuthorityNumber
-                    ? user.healthAuthorityNumber
-                    : "NON"}
+                  {user.healthAuthorityNumber ? user.healthAuthorityNumber : "NON"}
                 </span>
               )}
               <span
@@ -439,9 +540,7 @@ export default function Profile() {
                     }
                   />
                 ) : (
-                  <span className="fs-5">
-                    {user.specializationCategory?.name}
-                  </span>
+                  <span className="fs-5">{user.specializationCategory?.name}</span>
                 )}
                 <span
                   style={{
@@ -463,9 +562,7 @@ export default function Profile() {
                     className="border-0 mb-1"
                     style={{ outline: "0" }}
                     value={user.specialization}
-                    onChange={(e) =>
-                      setUser({ ...user, specialization: e.target.value })
-                    }
+                    onChange={(e) => setUser({ ...user, specialization: e.target.value })}
                   />
                 ) : (
                   <span className="fs-5">{user.specialization}</span>

@@ -6,11 +6,11 @@ import axios from "axios";
 import { BASE } from "../../../Api";
 import Cookie from "cookie-universal";
 // Translation Work
-// import { useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 export default function EventDetails() {
   // Translation Work
-  // const { i18n } = useTranslation();
+  const { i18n } = useTranslation();
 
   const { eventId } = useParams();
   const [eventDetails, setEventDetails] = useState(null);
@@ -22,6 +22,7 @@ export default function EventDetails() {
       .get(`${BASE}/Event/GetForApp/${eventId}`, {
         headers: {
           UserId: userId,
+          Language: i18n.language,
         },
       })
       .then((response) => {
@@ -30,7 +31,7 @@ export default function EventDetails() {
       .catch((error) => {
         console.error("Error fetching event details:", error);
       });
-  }, [eventId, userId]);
+  }, [eventId, userId, i18n.language]);
 
   if (!eventDetails) {
     return <div className="p-4">Loading...</div>;

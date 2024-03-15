@@ -28,6 +28,7 @@ export default function Home() {
       .get(`${BASE}/Event/GetUpCommingForApp`, {
         headers: {
           UserId: userId,
+          Language: i18n.language,
         },
         params: {
           limite: 100,
@@ -38,7 +39,7 @@ export default function Home() {
         setEvents(data.data.responseObject.events);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [i18n.language, userId]);
  
   const [recommendEvents, setrecommendEvents] = useState([]);
 
