@@ -90,9 +90,9 @@ export default function EventDetails() {
                   borderRadius: "20px",
                 }}
               >
-                <span>{eventDetails.eventDays[0].latitude}</span>
+                <span>{eventDetails.eventDays[0].noOfAttend ? eventDetails.eventDays[0].noOfAttend : 0}</span>
                 <span className="text-secondary mx-1">
-                  /{eventDetails.eventDays[0].longitude}
+                  /{eventDetails.eventDays[0].noOfTickets}
                 </span>
                 <svg
                   width="18"
